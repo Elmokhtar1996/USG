@@ -1,0 +1,17 @@
+<app-home></app-home>
+<div class="form">
+
+<ul  *ngFor="let Adherant of Adherants; let i = index" >
+ 
+        <div *ngIf="Adherant.NomSection == 'Natation'">
+    <li>
+     
+            {{ Adherant.Nom }}</li>
+            <li> {{ Adherant.Prenom }}
+            
+        </li>
+     
+
+</div>
+   </ul>
+</div>
