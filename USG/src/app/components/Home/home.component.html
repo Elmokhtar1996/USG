@@ -243,13 +243,10 @@
           <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
             <i class="bi bi-menu-button-wide"></i><span>Sections</span><i class="bi bi-chevron-down ms-auto"></i>
           </a>
-          <ul *ngFor="let roles of Roles; let i = index" id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <a [routerLink]="['/coordonnees/', roles.nomSection]">
-              <i class="bi bi-circle"></i><span > {{ roles.nomSection }}</span>
-              
+          <ul *ngFor="let section of Sections; let i = index" id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <a [routerLink]="['/adherants/', section.nomSection]">
+              <i class="bi bi-circle"></i><span > {{ section.nomSection }}</span>
             </a>
-         
-       
           </ul>
         </li><!-- End Components Nav -->
   

@@ -15,7 +15,10 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   // Get all employees
-  getAdherant() {
+  getAdherant(id :string) {
+    return this.http.get(`${this.baseUri}/read/${id}`);
+  }
+  getAdherants() {
     return this.http.get(`${this.baseUri}/adherant`);
   }
   getSection() {

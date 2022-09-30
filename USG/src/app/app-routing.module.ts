@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { coordonneesComponent } from './components/Coordonnees/coordonnees.component';
+import { adherantsComponent } from './components/Adherant/adherants.component';
 import { homeComponent } from './components/Home/home.component';
 import { signinComponent } from './components/Signin/signin.component';
 
 const routes: Routes = [
   { path: 'home', component: homeComponent },
-  { path: '', component: signinComponent },
-  { path: 'coordonnees/:id', component: coordonneesComponent },
+  { path: 'Authentification', component: signinComponent },
+  { path: 'adherants/:id', component: adherantsComponent },
   
 
 ];

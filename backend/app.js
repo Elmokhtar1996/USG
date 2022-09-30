@@ -65,6 +65,7 @@ app.get( '/auth/google/callback',
 app.get('/protected', isLoggedIn, (req, res) => {
 
   res.redirect('http://localhost:4200/home');
+
 });
 
 app.get('/logout', (req, res) => {
@@ -77,14 +78,12 @@ app.get('/auth/google/failure', (req, res) => {
   res.send('Failed to authenticate..');
 });
 app.get('/read/:id' , (req, res) => {
-  
-  Employee.findById(req.params.id, (error, data) => {
-    if (error) {
-      return next(error)
-    } else {
-      res.json(data)
-    }
-  })
+ 
+    con.query('SELECT * FROM Vue_sections" ', function (err, data)  {
+      if (err) throw err;
+      return res.json(data);
+
+  });
 })
 // set port
 app.listen(4000, function () {

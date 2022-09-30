@@ -7,11 +7,11 @@ import { AppComponent } from './app.component';
 import { homeComponent } from './components/Home/home.component';
 import { ApiService } from './service/api.service';
 import { signinComponent } from './components/Signin/signin.component';
-import { coordonneesComponent } from './components/Coordonnees/coordonnees.component';
+import { adherantsComponent } from './components/Adherant/adherants.component';
 const routes: Routes = [
   { path: 'home', component: homeComponent },
   { path: '', component: signinComponent },
-  { path: 'coordonnees', component: coordonneesComponent },
+  { path: 'adherants/:id', component: adherantsComponent },
   
 
 ];
@@ -21,7 +21,7 @@ const routes: Routes = [
     AppComponent,
     homeComponent,
     signinComponent,
-    coordonneesComponent
+    adherantsComponent
   ],
 
   imports: [

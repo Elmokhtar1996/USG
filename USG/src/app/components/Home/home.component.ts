@@ -7,7 +7,7 @@ import { ApiService } from '../../service/api.service';
   styleUrls: ['./home.component.css']
 })
 export class homeComponent implements OnInit {
-  Roles:any = [];  
+  Sections:any = [];  
   constructor(private apiService: ApiService) { 
     this.readSection();
   }
@@ -15,8 +15,8 @@ export class homeComponent implements OnInit {
   readSection(){
       
       this.apiService.getSection().subscribe((data) => {
-        this.Roles = data;
-        console.log(this.Roles)
+        this.Sections = data;
+        console.log(this.Sections)
        
        })    
      }
