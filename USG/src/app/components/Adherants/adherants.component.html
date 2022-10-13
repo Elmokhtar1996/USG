@@ -1,0 +1,51 @@
+
+<app-home></app-home>
+<body class="hm-gradient">  
+  
+ 
+    <main id="main" class="main"> 
+      <div class="pagetitle">
+        <h1>Listes Adherants : {{nomSection}}</h1>
+      </div><!-- End Page Title -->
+    
+      <!--MDB Tables-->
+      <div class="container mt-4">
+          <div class="card mb-4">
+              <div class="card-body">
+                  <!--Table-->
+                  <table class="table table-hover">
+                      <!--Table head-->
+                       <thead style="background-color: #1E234E;">
+        <tr class="text-white">
+          <th scope="col">Nom</th>
+          <th scope="col">Prenom</th>
+          <th scope="col">Date de naissance</th>
+          <th scope="col">Sexe</th>
+          <th scope="col">Age</th>
+      
+          
+          
+        </tr>
+      </thead>
+      <tbody id="myTable" *ngFor="let Adherant of Adherants ">
+        <!-- | paginate
+      : {
+          itemsPerPage: 5,
+          currentPage: p} -->
+   
+        <tr  *ngIf="Adherant.NomSection == nomSection ">
+   
+            <td>{{ Adherant.length }}</td>
+             <td>{{ Adherant.Prenom }}</td>
+             <td>{{ Adherant.date_de_naissance }}</td>
+             <td>{{ Adherant.Sexe }}</td>
+             <td>{{ Adherant.Age }}</td>
+            </tr>
+     </tbody>
+     <pagination-controls
+
+     (pageChange)="p = $event">
+   </pagination-controls>
+</table>
+
+</div></div>

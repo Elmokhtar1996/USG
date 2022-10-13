@@ -1,13 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { adherantsComponent } from './components/Adherant/adherants.component';
-import { homeComponent } from './components/Home/home.component';
-import { signinComponent } from './components/Signin/signin.component';
+import { AdherantsStatistiqueComponent } from './components/adherants-statistique/adherants-statistique.component';
+import { adherantsComponent } from './components/Adherants/adherants.component';
+import { HomeComponent } from './components/home/home.component';
+import { PresidentUsgComponent } from './components/president-usg/president-usg.component';
+import { SignupComponent } from './components/signup/signup.component';
+
 
 const routes: Routes = [
-  { path: 'home', component: homeComponent },
-  { path: 'Authentification', component: signinComponent },
   { path: 'adherants/:id', component: adherantsComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'home', component: PresidentUsgComponent },
+  { path: '', component: HomeComponent },
+  { path: 'adherants-statistique', component: AdherantsStatistiqueComponent },
+
+
   
 
 ];
