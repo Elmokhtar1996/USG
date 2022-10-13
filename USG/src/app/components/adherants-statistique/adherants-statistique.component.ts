@@ -9,34 +9,23 @@ declare var google:any;
   styleUrls: ['./adherants-statistique.component.css']
 })
 export class AdherantsStatistiqueComponent implements OnInit {
-  
+  zebbi="jjjj";
   AgeAdherants:any = [];
   newArray:any = [];
-  public zebbi!: string;
   constructor(private apiService: ApiService,private actRoute: ActivatedRoute) {
-  
+this.readAgeAdherants();
    }
 
   ngOnInit(): void {
     
     google.charts.load('current', {packages: ['corechart']});
-  google.charts.setOnLoadCallback(this.drawChart);
+  google.charts.setOnLoadCallback(this.drawChartd);
   }
-  drawChart(){
-    console.log(this.zebbi)
-    this.apiService.getAgeAdherant().subscribe((data) => {
-      this.AgeAdherants = data;
-     this.newArray = this.AgeAdherants.filter(function (el: { Sections: string; }) {
-      return el.Sections =="Omnisports" 
-     
-      
-    });
-this.zebbi=this.newArray[0].zero_quatorz;
-  })
+  drawChartd(){
+
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'Topping');
     data.addColumn('number', 'Slices');
-    var zlabia = 'ggg'
     data.addRows([
       ['Mushrooms', 5],
       ['Onions', 1],
@@ -55,5 +44,16 @@ this.zebbi=this.newArray[0].zero_quatorz;
     chart.draw(data, options);
 
   }
-
+  readAgeAdherants(){
+    this.apiService.getAgeAdherant().subscribe((data) => {
+      this.AgeAdherants = data;
+    console.log(this.zebbi)
+     this.newArray = this.AgeAdherants.filter(function (el: { Sections: string; }) {
+      return el.Sections =="Omnisports" 
+     
+      
+    });
+this.zebbi=this.newArray[0].zero_quatorz;
+  })
+}
 }
