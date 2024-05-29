@@ -1,0 +1,103 @@
+<app-home></app-home>
+<body class="hm-gradient">  
+
+ 
+    <main id="main" class="main"> 
+<div class="card mb-4">
+    <div class="card-body">
+        <!--Table-->
+        <table class="table table-bordered .table-bordered table-fixed">
+          <!--Table head-->
+          <thead style="background-color: #1D2D50;">
+            <tr class="text-white">
+              <th scope="col" (click)="toggleAllSelection()">select</th>
+              <th scope="col" (click)="sortData('nom', !reverse)">
+                Nom
+                <i class="bi bi-arrow-down{{selectedFilter === 'nom' && !reverse ? '' : '-square'}}"></i>
+                <i class="bi bi-arrow-up{{selectedFilter === 'nom' && reverse ? '' : '-square'}}"></i>
+              </th> 
+              <th scope="col" (click)="sortData('Prenom', !reverse)">
+                Prenom
+                <i class="bi bi-arrow-down{{selectedFilter === 'Prenom' && !reverse ? '' : '-square'}}"></i>
+                <i class="bi bi-arrow-up{{selectedFilter === 'Prenom' && reverse ? '' : '-square'}}"></i>
+              </th> 
+              <th scope="col" (click)="sortData('Sexe', !reverse)">
+                Genre
+                <i class="bi bi-arrow-down{{selectedFilter === 'Sexe' && !reverse ? '' : '-square'}}"></i>
+                <i class="bi bi-arrow-up{{selectedFilter === 'Sexe' && reverse ? '' : '-square'}}"></i>
+              </th> 
+              <th scope="col">Date de naissance</th>
+             
+             
+              <th scope="col" (click)="sortData('Age', !reverse)">
+                Age
+                <i class="bi bi-arrow-down{{selectedFilter === 'Age' && !reverse ? '' : '-square'}}"></i>
+                <i class="bi bi-arrow-up{{selectedFilter === 'Age' && reverse ? '' : '-square'}}"></i>
+              </th>                       
+    
+              
+              <th scope="col" style="color :red ; background-color: white;">Suprimer</th>
+              <th scope="col" style="color :rgb(0, 183, 255) ; background-color: white;">Modification</th>
+             
+            </tr>
+            
+          </thead>
+          <tbody id="myTable" *ngFor="let employee of employee | paginate: { itemsPerPage: itemsPerPage, currentPage: p }; let i = index">
+            <ng-container>
+              <tr class="text-whit" >
+                <td><input type="checkbox" [(ngModel)]="employee.isChecked"></td>
+                <td>{{ employee.Nom }}</td>
+                <td>{{ employee.Prenom }}</td>
+                <td>{{ employee.Sexe }}</td>
+                <td>{{ employee.date_de_naissance | date:'dd-MM-yyyy' }}</td>                <td>
+                  <div *ngIf="employee.image">
+                  <img alt="" class="rounded-circle" style="width: 45px; height: 45px;" [src]="employee.image">
+
+</div>
+                      
+            </td>                 
+                  
+                <td *ngIf="employee.libelleNotification && employee.libelleNotification.trim().length > 0">
+                  <span title="{{ employee.libelleNotification }}">
+                    <i class="bi bi-chat-dots icon"></i>
+                  </span>
+                </td>
+               <!-- <td>
+                    <span title="{{ employee.libelleNotification }}">
+                      <i class="bi bi-chat-dots icon"></i>
+                    </span>
+                  </td>
+                
+              </tr>-->
+              <!--Collapsed content-->
+            
+                <!-- Modal -->
+            </ng-container>
+          </tbody>
+        </table>
+        <div style="display: inline-block;">
+<select  class="form-control me-2" id="recherche">
+          <option value="">Sélectionnez une action</option>
+          <option value="export"><i class="bi bi-arrow-bar-down"></i>
+            Exporter</option>
+          <option value="mark_paid"><i class="bi bi-credit-card-2-front"></i>
+            Marquer comme payé</option>
+          <option value="send_email"><i class="bi bi-envelope-at"></i>
+            Relancer par mail</option>
+          <option value="invite_event"><i class="bi bi-envelope-paper"></i>
+  Inviter à un évènement</option>
+        </select>
+        </div>
+        <div style="display: inline-block;">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+        <div style="display: inline-block;">
+          <select [(ngModel)]="itemsPerPage" class="form-select" style="width: 30px;">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+          </select>
+        </div><br>
+        <button type="button" class="btn btn-primary"  (click)="ajouterEmployee()">Ajouter adhérent</button>
+</div>
+</div>

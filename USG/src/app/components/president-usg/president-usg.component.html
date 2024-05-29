@@ -1,13 +1,14 @@
 <app-home></app-home>
+
 <body class="hm-gradient">  
     <main id="main" class="main"> 
         <div class="container">
             <div class="card">
               <div class="box">
                 <div class="content">
-                  <h3>Adherants</h3>
-                  <p *ngFor="let Adherant of nbAdherants " >{{Adherant.nba}}</p>
-                  <a [routerLink]="['/adherants-statistique/']">Read More</a>
+                  <h3>Adhérents</h3>
+                  <p>{{nbAdherants[0].nba}}</p>
+                  <a [routerLink]="['/adherants']">Plus ++</a>
                 </div>
               </div>
             </div>
@@ -15,17 +16,35 @@
                 <div class="box">
                   <div class="content">
                     <h3>Sections </h3>
-                    <p *ngFor="let Section of nbSections " >{{Section.nbs}}</p>
-                    <a href="#">Read More</a>
+                    <p>{{nbSections[0].nbs}}</p>
+                    <a [routerLink]="['/sections-statistique/']">Plus ++</a>
                   </div>
                 </div>
               </div>
               <div class="card">
                 <div class="box">
                   <div class="content">
-                    <h3>Bénévoles</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, totam velit? Iure nemo labore inventore?</p>
-                    <a href="#">Read More</a>
+                    <h3>Bénévoles </h3>
+                    <p>{{nbBenevole[0].nbb}}</p>
+                    <a [routerLink]="['/benevole-statistique/']">Plus ++</a>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="box">
+                  <div class="content">
+                    <h3>Employés </h3>
+                    <p>{{nbEmploye[0].nbe}}</p>
+                    <a [routerLink]="['/employe-statistique/']">Plus ++</a>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="box">
+                  <div class="content">
+                    <h3>Services civiques</h3>
+                    <p></p>
+                    <a href="#">Plus ++</a>
                   </div>
                 </div>
               </div>
@@ -33,49 +52,31 @@
                 <div class="box">
                   <div class="content">
                     <h3>Dirigeants </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, totam velit? Iure nemo labore inventore?</p>
-                    <a href="#">Read More</a>
+                    <p>{{nbDirigeant[0].nbd}}</p>
+                    <a [routerLink]="['/dirigeants-statistique/']">Plus ++</a>
                   </div>
                 </div>
               </div>
               <div class="card">
                 <div class="box">
                   <div class="content">
-                    <h3>Stagiares</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, totam velit? Iure nemo labore inventore?</p>
-                    <a href="#">Read More</a>
+                    <h3>Stagiaires</h3>
+                    <p></p>
+                    <a href="#">Plus ++</a>
                   </div>
                 </div>
               </div>
               <div class="card">
                 <div class="box">
                   <div class="content">
-                    <h3>Card One</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, totam velit? Iure nemo labore inventore?</p>
-                    <a href="#">Read More</a>
+                    <h3>Evolutions annuelles</h3>
+                    <p></p>
+                    <a [routerLink]="['/evolutionsAnnuelles/']">Plus ++</a>
                   </div>
                 </div>
               </div>
           
-            <div class="card">
-              <div class="box">
-                <div class="content">
-                  <h3>Card Two</h3>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, totam velit? Iure nemo labore inventore?</p>
-                  <a href="#">Read More</a>
-                </div>
-              </div>
-            </div>
-          
-            <div class="card">
-              <div class="box">
-                <div class="content">
-                  <h3>Card Three</h3>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, totam velit? Iure nemo labore inventore?</p>
-                  <a href="#">Read More</a>
-                </div>
-              </div>
-            </div>
+            
             
           </div>
           

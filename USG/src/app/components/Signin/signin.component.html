@@ -1,1 +1,17 @@
-<p>signin works!</p>
+<div class="login-container">
+  <form [formGroup]="signinForm" (ngSubmit)="loginUser()" class="login-form">
+    <img src="assets/img/logousg.png" alt="Logo de mon app" class="logo">
+
+
+    <div class="input-group">
+      <input type="text" id="username" formControlName="email" placeholder="Username" required>
+    </div>
+    <div class="input-group">
+      <input type="password" id="password" formControlName="password" placeholder="Password" required>
+    </div>
+    <button type="submit">Login</button>
+    <div class="bottom-text">
+
+    </div>
+  </form>
+</div>

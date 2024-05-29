@@ -1,51 +1,211 @@
 
 <app-home></app-home>
 <body class="hm-gradient">  
-  
+
  
     <main id="main" class="main"> 
-      <div class="pagetitle">
-        <h1>Listes Adherants : {{nomSection}}</h1>
+      <div class="pagetitle" id="section">
+        <div *ngFor="let section of Sections; let i = index"  class="btn-group" role="group" aria-label="Basic example">
+          <button type="button"  class="btn btn-secondary" (click)="selectSection(section)" >{{ section.Libelle }}</button>
+          
+        </div>
+        <button type="button" *ngIf="!showTennisField"  class="btn btn-secondary"(click)="selectAllSections()" >Afficher tous les adhérents</button>
+        <button type="button" *ngIf="!showTennisField"  class="btn btn-secondary" (click)="getpersonnes()">Afficher tous les personnes</button>
+
+
+        
+
       </div><!-- End Page Title -->
+  
+      
+
+    <div class="d-flex align-items-center">
+      <input id="recherche" class="form-control me-2" type="text" placeholder="Recherche" [(ngModel)]="searchTerm" (input)="search()">
+
+      <select [(ngModel)]="selectedSaison" class="form-control me-2" (ngModelChange)="selectSaison($event)">
+        <option value="0" >Toutes les saisons</option>
+        <option value="2">Saison 2022/2023</option>
+        <option value="1">Saison 2021/2022</option>
+        <option value="3">Saison 2020/2021</option>
+        <option value="4">Saison 2019/2020</option>
+      </select>
+
+    </div>
     
       <!--MDB Tables-->
+      <h3>
+       
+        <h3>
+          <small class="text-section">liste des adhérents de section : <div class="selectsection">{{ selectedSection }}</div>Pour la :</small><div class="selectsection"> {{ selectedSaison == 1 ? 'Saison 2021/2022' : selectedSaison == 2 ? 'Saison 2022/2023' : selectedSaison == 3 ? 'Saison 2021/2022' : selectedSaison == 4 ? 'Saison 2019/2020' : 'Toutes les saisons' }}</div>
+        </h3>
+      </h3>
+
       <div class="container mt-4">
+        <div class="d-flex justify-content-end mb-2">
+
+        <button type="button" class="btn btn-primary"  (click)="goToAddAdherent()">Ajouter adhérent</button>
+
+</div>
           <div class="card mb-4">
               <div class="card-body">
                   <!--Table-->
-                  <table class="table table-hover">
-                      <!--Table head-->
-                       <thead style="background-color: #1E234E;">
-        <tr class="text-white">
-          <th scope="col">Nom</th>
-          <th scope="col">Prenom</th>
-          <th scope="col">Date de naissance</th>
-          <th scope="col">Sexe</th>
-          <th scope="col">Age</th>
-      
-          
-          
-        </tr>
-      </thead>
-      <tbody id="myTable" *ngFor="let Adherant of Adherants ">
-        <!-- | paginate
-      : {
-          itemsPerPage: 5,
-          currentPage: p} -->
-   
-        <tr  *ngIf="Adherant.NomSection == nomSection ">
-   
-            <td>{{ Adherant.length }}</td>
-             <td>{{ Adherant.Prenom }}</td>
-             <td>{{ Adherant.date_de_naissance }}</td>
-             <td>{{ Adherant.Sexe }}</td>
-             <td>{{ Adherant.Age }}</td>
-            </tr>
-     </tbody>
-     <pagination-controls
+                  <table class="table table-bordered .table-bordered table-fixed">
+                    <!--Table head-->
+                    <thead style="background-color: #1D2D50;">
+                      <tr class="text-white">
+                        <th scope="col" (click)="toggleAllSelection()">select</th>
+                        <th scope="col" (click)="sortData('nom', !reverse)">
+                          Nom
+                          <i class="bi bi-arrow-down{{selectedFilter === 'nom' && !reverse ? '' : '-square'}}"></i>
+                          <i class="bi bi-arrow-up{{selectedFilter === 'nom' && reverse ? '' : '-square'}}"></i>
+                        </th> 
+                        <th scope="col" (click)="sortData('Prenom', !reverse)">
+                          Prenom
+                          <i class="bi bi-arrow-down{{selectedFilter === 'Prenom' && !reverse ? '' : '-square'}}"></i>
+                          <i class="bi bi-arrow-up{{selectedFilter === 'Prenom' && reverse ? '' : '-square'}}"></i>
+                        </th> 
+                        <th scope="col" (click)="sortData('Sexe', !reverse)">
+                          Genre
+                          <i class="bi bi-arrow-down{{selectedFilter === 'Sexe' && !reverse ? '' : '-square'}}"></i>
+                          <i class="bi bi-arrow-up{{selectedFilter === 'Sexe' && reverse ? '' : '-square'}}"></i>
+                        </th> 
+                        <th scope="col">Date de naissance</th>
+                       
+                       
+                        <th scope="col" (click)="sortData('Age', !reverse)">
+                          Age
+                          <i class="bi bi-arrow-down{{selectedFilter === 'Age' && !reverse ? '' : '-square'}}"></i>
+                          <i class="bi bi-arrow-up{{selectedFilter === 'Age' && reverse ? '' : '-square'}}"></i>
+                        </th>                       
+                         <th scope="col">Licence</th>
+                         <th scope="col">Certificat médical</th>
+                        <th scope="col">Statut de l'adhésion</th>
+                        
+                        <th scope="col" style="color: green;background-color: white;">Details</th>
+                        <th scope="col" style="color :red ; background-color: white;">Suprimer</th>
+                        <th scope="col" style="color :rgb(0, 183, 255) ; background-color: white;">Notification</th>
+                       
+                      </tr>
+                      
+                    </thead>
+                    <tbody id="myTable" *ngFor="let Adherant of Adherants | paginate: { itemsPerPage: itemsPerPage, currentPage: p }; let i = index">
+                      <ng-container>
+                        <tr class="text-whit" >
+                          <td><input type="checkbox" [(ngModel)]="Adherant.isChecked"></td>
+                          <td>{{ Adherant.Nom }}</td>
+                          <td>{{ Adherant.Prenom }}</td>
+                          <td>{{ Adherant.Sexe }}</td>
+                          <td>{{ Adherant.date_de_naissance | date:'dd-MM-yyyy' }}</td>
+                          <td>{{ Adherant.Age }}</td>
+                         <td>{{ Adherant.libele_Licence }}</td>
+                         <td>
+                          {{ Adherant.dateFin ? 'Expiré le ' + (Adherant.dateFin | date:'dd-MM-yyyy') : 'aucun' }}
+                      </td>                        <td [ngClass]="{'bg-success': Adherant.statutAdhesion === 'active', 'bg-danger': Adherant.statutAdhesion === 'incomplete','bg-warning': Adherant.statutAdhesion === 'anomalie'}">{{ Adherant.statutAdhesion }}</td>
+                          <td (click)="Adherant.isCollapsed = !Adherant.isCollapsed"><i class="bi bi-plus-square"></i>
+                          </td>
+                          <td><i class="bi bi-trash"  (click)="removeDirigeant(Adherant, i)"></i></td>
+                            
+                          <td *ngIf="Adherant.libelleNotification && Adherant.libelleNotification.trim().length > 0">
+                            <span title="{{ Adherant.libelleNotification }}">
+                              <i class="bi bi-chat-dots icon"></i>
+                            </span>
+                          </td>
+                         <!-- <td>
+                              <span title="{{ Adherant.libelleNotification }}">
+                                <i class="bi bi-chat-dots icon"></i>
+                              </span>
+                            </td>
+                          
+                        </tr>-->
+                        <!--Collapsed content-->
+                        <tr [ngClass]="{'d-none': !Adherant.isCollapsed}">
+                          <td colspan="14">
+                            <div class="adherant-info mt-5 d-flex" id="collapseExample" mdbCollapse>
+                              <div class="table-responsive">
+                                <table class="table table-bordered .table-bordered table-fixed">
+                                  <thead class="bg-light" >
+                                    <tr class="collaps">
+                                      <th scope="col">Photo</th>
+                                      <th scope="col" colspan="2">Section et Licence</th>
+                                      <th scope="col">Téléphone</th>
+                                      <th scope="col">Adresse</th>
+                                      <th scope="col">Email</th>
+                                      <th scope="col">Parents</th>
+                                      <th scope="col">Remarque</th>
+                                      <th scope="col">Statut de l'adhésion</th>
+                                      <th scope="col">Modifier</th>
+                                      <th scope="col">Notification</th>
+                                      <th scope="col">Inscrire</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr class="collaps">
+                                      <td>
+                                        <div *ngIf="Adherant.image">
+                                        <img alt="" class="rounded-circle" style="width: 45px; height: 45px;" [src]="Adherant.image">
 
-     (pageChange)="p = $event">
-   </pagination-controls>
-</table>
+</div>
+                                            
+                                  </td>
+                              
+                                      <td><p class="fw-normal mb-1">{{ Adherant.NomSection }}</p></td>
+                                      <td><p class="fw-normal mb-1">{{ Adherant.libele_Licence }}</p></td>
+                                      <td><p class="fw-normal mb-1">{{ Adherant.telPortable }}</p></td>
+                                      <td><p class="fw-normal mb-1">{{ Adherant.numEtVoie }}</p><p class="text-muted mb-0"> {{ Adherant.commune }}</p></td>
+                                      <td><p class="fw-normal mb-1">{{ Adherant.adresseMail }}</p></td>
+                                      <td><p class="fw-normal mb-1">{{ Adherant.Prenom }}</p></td>
+                                      <td>
+                                        <span title="{{ Adherant.commentaire }}">
+                                          <i class="bi bi-chat-dots icon"></i>
+                                        </span>
+                                      </td>
+                                      
+                                      <td><p class="fw-normal mb-1"></p></td>
+                                      <td>
+                                        <button style="display: inline-block;" (click)="editAdherant(Adherant)">
+                                          <i class="bi bi-pencil-square icon"></i>
+                                        </button></td>
+                                        
+                                    <td><button style="display: inline-block;"><i class="bi bi-calendar2-plus icon"></i></button>
+                                    </td>                           
+                                    </tr>
 
-</div></div>
+                                      <!-- vos autres colonnes ici --> 
+                                  </tbody>
+                                </table>
+                              </div>
+                         
+                            </div>
+                          </td>
+                        </tr>
+                          <!-- Modal -->
+                      </ng-container>
+                    </tbody>
+                  </table>
+                  <div style="display: inline-block;">
+<select (change)="handleSelection($event)" class="form-control me-2" id="recherche">
+                    <option value="">Sélectionnez une action</option>
+                    <option value="export"><i class="bi bi-arrow-bar-down"></i>
+                      Exporter</option>
+                    <option value="mark_paid"><i class="bi bi-credit-card-2-front"></i>
+                      Marquer comme payé</option>
+                    <option value="send_email"><i class="bi bi-envelope-at"></i>
+                      Relancer par mail</option>
+                    <option value="invite_event"><i class="bi bi-envelope-paper"></i>
+            Inviter à un évènement</option>
+                  </select>
+                  </div>
+                  <div style="display: inline-block;">
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                  </div>
+                  <div style="display: inline-block;">
+                    <select [(ngModel)]="itemsPerPage" class="form-select" style="width: 30px;">
+                      <option value="5">5</option>
+                      <option value="10">10</option>
+                      <option value="20">20</option>
+                    </select>
+                  </div><br>
+                  <button type="button" class="btn btn-primary"  (click)="goToAddAdherent()">Lien de pré-inscription </button>                  <!-- Button trigger modal -->
+</div>
+</div>
+</div>

@@ -12,14 +12,19 @@ export class PresidentUsgComponent implements OnInit {
   Adherants:any = []; nbSections:any;
   Sections:any = [];
   nbAdherants: any;
-  
+  nbBenevole: any;
+  nbEmploye: any;
+  nbDirigeant: any;
+
   constructor(private apiService: ApiService,private ServiceSectionService: ServiceSectionService,private actRoute: ActivatedRoute,) { 
     this.readAdherant();
     this.readSections();
     this.readNbAdherant();
     this.readNbSection();
+    this.readNbBenevole();
+    this.readNbEmploye();
+    this.readNbDirigeants();
   }
-
   ngOnInit(): void {
   }
   readAdherant(){
@@ -39,14 +44,31 @@ export class PresidentUsgComponent implements OnInit {
         this.apiService.getnbAdherant().subscribe((data) => {
           this.nbAdherants = data;
           
-           
       })
     }
     readNbSection(){
       this.ServiceSectionService.getnbSection().subscribe((data) => {
         this.nbSections = data;
-        console.log( this.nbSections)
          
     })
   }
-  }
+  readNbEmploye(){
+    this.apiService.getEmploye().subscribe((data) => {
+      this.nbEmploye = data;
+       
+  })
+}
+readNbDirigeants(){
+  this.apiService.getnbdirigeant().subscribe((data) => {
+    this.nbDirigeant = data;
+    console.log(this.nbDirigeant)
+     
+})
+}
+  readNbBenevole(){
+    this.apiService.getBenevole().subscribe((data) => {
+      this.nbBenevole = data;
+
+  })
+  }}
+  

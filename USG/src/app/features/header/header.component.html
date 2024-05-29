@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"> <img src="assets/img/logos.png"  alt="Profile" class="logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/details-produits">details produit</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/charts">historique de donnée</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">About</a>
+          </li>
+
+        </ul>
+
+      
+ 
+
+
+
+          <!-- <div class="container">Hi and welcome!</div>
+    <div class="container">Name: {{ userInfo?.info?.name }}</div>
+    <div class="container"><img src="{{ userInfo?.info?.picture }}"></div>
+    <div class="container">
+      <button (click)="getEmails()">List Emails</button>
+    </div>
+    <div class="container" *ngFor="let snippet of mailSnippets">
+      {{ snippet }}
+    </div>
+    <div class="container">
+      <button (click)="logout()">Logout from Google</button>
+    </div> -->
+
+
+
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle"  id="dropdownMenuButton" data-toggle="dropdown">
+       
+        <span>{{ userInfo?.info?.name }}</span>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Action</a>
+        <button (click)="logout()">Logout from Google</button>
+
+      </div>
+    </div>
+  </nav>

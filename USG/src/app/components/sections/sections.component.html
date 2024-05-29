@@ -1,0 +1,57 @@
+
+<app-home></app-home>
+<body class="hm-gradient">  
+    <main id="main" class="main"> 
+      <div class="row">
+        <div *ngFor="let section of Sections; let i = index" class="col-md-3">
+            <div class="card">
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" (click)="showAdherents(section.Libelle)">Afficher les adhérents</a>                        <a class="dropdown-item" (click)="supprimerSection(i)">Supprimer</a>
+                    </div>
+                </div>
+                <div *ngIf="section.image" class="image-container">
+                    <img class="card-img-top" [src]="extractImageName(section.image)" alt="Section Image">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ section.Libelle }}</h5>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<button class="btn btn-primary"  (click)="openDialog()">Ajouter une section</button>
+
+<div *ngIf="isDialogOpen" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Ajouter une nouvelle section</h5>
+          <button type="button" class="close" (click)="closeDialog()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (submit)="ajouterSection()">
+            <div class="form-group">
+              <label for="sectionName">Nom de la section :</label>
+              <input type="text" class="form-control" id="sectionName" name="sectionName" [(ngModel)]="newSectionName" required>
+              <input type="file" name="image" (change)="onImageSelected($event)" accept="image/*">
+            </div>
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+            <button type="button" class="btn btn-secondary" (click)="closeDialog()">Annuler</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+        
+          
+
+</main></body>

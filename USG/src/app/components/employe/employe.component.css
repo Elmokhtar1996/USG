@@ -1,0 +1,75 @@
+td span {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  td span:hover::before {
+   
+    content: attr(title);
+    position: absolute;
+    transform: translateX(-50%);
+    padding: 5px;
+    background-color: #FAD9B6;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+  #recherche{
+    width: 170px;
+    height: 26px;
+    font-size: 10px;
+  }
+  
+  #section button{
+  color: black;
+  background-color: #FAD9B6;
+  border-width: 2px;
+  border-color: black;
+  }
+  .text-section{
+    color: black;
+    display: inline-block;
+    margin-left: 36%;
+  
+  }
+  .selectsection{
+  
+    display: inline-block;
+    font-size: 17px;
+    font-weight: bold;
+  
+  }
+  #section button:active {
+    background-color: red;
+  }
+  .text-white{
+    font-size: 11px;
+  }
+  .text-whit{
+    font-size: 13px;
+    color: black;
+  }
+  .collaps{
+  
+  font-size: 9px;
+  }
+  #exampleModalLongTitle{
+  background-color: #29749D;
+  color: white;}
+  .icon {
+    font-size: 2em;
+    display: inline-block;
+  }
+  #diplay{
+  
+  
+    display: inline-block;
+  }
+  

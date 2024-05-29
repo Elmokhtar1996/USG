@@ -1,0 +1,130 @@
+<app-home></app-home>
+
+<body class="hm-gradient">  
+    
+  <main id="main" class="main"> 
+    <legend><h2><b>Ajouter un adhérent :</b></h2></legend><br>
+      <div class="container">
+                  <form [formGroup]="employeeForm" id="msform"  (ngSubmit)="onSubmit()"  enctype="multipart/form-data">
+                 <div class="form-container" >
+                           <!-- champs personne et coordonnes -->
+                  <div class="form-section">
+                  
+                    
+                    <div class="form-group">
+              
+
+                      <h3>Informations personnelles</h3>
+                      <div class="form-group">
+                        <label for="image">Image:</label>
+                        <input type="file" formControlName="image" (change)="onFileSelected($event)" accept="image/*" class="form-control-file" id="image">
+                      </div>
+
+                  </div>
+                  <div class="form-group">
+
+                        <div class="col-md-6 inputGroupContainer">
+                          <label for="nom">Nom :</label>
+                          <div class="input-group">
+                            <input type="text"  formControlName="nom" id="nom" class="form-control" required >
+                          </div>
+                        </div>
+                        <div class="col-md-6 inputGroupContainer">
+                          <label for="prenom">Prenom :</label>
+
+                          <div class="input-group">
+                            <input type="text"  formControlName="prenom" class="form-control" id="prenom">
+                          </div>
+                        </div>
+                  </div>                       
+                  <div class="form-group">
+                      <div class="col-md-6 inputGroupContainer">
+                        <label for="datedenaissance">Date de naissance :</label>
+                          <div class="input-group">
+                      <input type="date"  formControlName="dateDeNaissance" class="form-control" id="datedenaissance">
+                          </div>
+                      </div>
+                      <div class="col-md-6 inputGroupContainer">
+                        <label for="Genre">Genre :</label>
+
+                          <div class="input-group">
+                      <select  aria-placeholder="genre" formControlName="genre" class="form-control " style="height: 35px;">
+                        <option value="" selected disabled>Choisissez le genre</option>
+                          <option value="Masculin">Masculin</option>
+                          <option value="Féminin">Féminin</option>
+                      </select>
+                     </div>
+                      </div>
+                  </div>                
+                  <div class="form-group">
+                    <div class="col-md-6 inputGroupContainer">
+                      <label for="Genre">Email :</label>
+
+                          <div class="input-group">
+                          <input type="text"  formControlName="adresseMail" class="form-control" id="adresseMail">
+                         </div>
+                    </div>
+                      
+                    <div class="col-md-6 inputGroupContainer">
+                      <label for="telPortable">telPortable :</label>
+
+                      <div class="input-group">
+                        <input type="text"  formControlName="telPortable" class="form-control" id="telPortable" >
+                      </div>            
+                   </div>
+                  </div>
+                  <div class="form-group">
+
+                          <div class="col-md-6 inputGroupContainer">
+                            <label for="Genre">Num et Voie :</label>
+
+                              <div class="input-group">
+                               <input type="text"  formControlName="numEtVoie" class="form-control" id="numEtVoie">
+                              </div> 
+                         </div>
+
+                          <div class="col-md-6 inputGroupContainer">
+                            <label for="codePostal">Code Postale :</label>
+
+                              <div class="input-group">
+                            <input type="text"  formControlName="codePostal" class="form-control" id="codePostal">
+                              </div>
+                         </div>
+                      
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-6 inputGroupContainer">
+                      <label for="commune">Commune :</label>
+                      <div class="input-group">
+                      <input  type="text" formControlName="commune" class="form-control" id="commune">
+                     </div>
+                    </div>
+                    <div class="col-md-6 inputGroupContainer">
+                      <label for="Handicap">Handicap :</label>
+
+                      <div class="input-group">
+                      <select  formControlName="handicap" class="form-control" id="Handicap" style="height: 35px;">
+                        <option value="" selected disabled>Handicap</option>
+                          <option value="1">OUI</option>
+                          <option value="2">NON</option>
+                  
+                      </select>
+                      <button type="submit">Valider</button>
+
+                     
+               </div> 
+                  </div>
+                  </div>
+                 
+                  </div>                
+              
+</div>                                
+           
+
+                  </form>
+                  
+            </div>     
+
+            
+</main>
+</body>

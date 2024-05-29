@@ -1,0 +1,94 @@
+.form-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .form-column {
+    flex: 1;
+    padding: 10px;
+  }
+  .form-section {
+    border: 1px solid #1D2D50;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Centrer le formulaire */
+  
+  
+  h3 {
+    background-color: #1D2D50; /* Couleur de fond du titre */
+      color: #fff; /* Couleur du texte du titre */
+      text-align: center; /* Centrage du texte */
+      padding: 10px; /* Espace intérieur autour du titre */
+      margin-top: 0; /* Suppression de la marge supérieure par défaut */
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 12px;
+  }
+  h2 {
+      color: #000000; /* Couleur du texte du titre */
+      padding: 10px; /* Espace intérieur autour du titre */
+      margin-top: 0; /* Suppression de la marge supérieure par défaut */
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      text-align: left;
+      font-size: 15px;
+  
+  }
+   button{
+    color: black;
+    background-color: #FAD9B6;
+    border-width: 2px;
+    border-color: black;
+    }
+    .annuler{
+      color: black;
+      background-color: #961717;
+      border-width: 2px;
+      border-color: black;    }
+  
+  /* Style des champs de formulaire */
+  
+  
+  .input-group-addon {
+    background-color: #ccc;
+    color: #333;
+  }
+  
+  .input-group {
+    border: 1px solid #000000;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .form-control {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 10px;
+  }
+  
+  /* Style pour les champs "select" */
+  .selectpicker {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 4px;
+  }
+  
+  /* Style pour le bouton Envoyer */
+  input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Au survol du bouton Envoyer */
+  input[type="submit"]:hover {
+    background-color: #222;
+  }
+  

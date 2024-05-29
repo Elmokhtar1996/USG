@@ -5,6 +5,182 @@
 * License: https://bootstrapmade.com/license/
 
 */
+// Attendre que la page soit chargée
+$(document).ready(function() {
+  $('#msform').bootstrapValidator({
+      // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+      feedbackIcons: {
+          valid: 'glyphicon glyphicon-ok',
+          invalid: 'glyphicon glyphicon-remove',
+          validating: 'glyphicon glyphicon-refresh'
+      },
+      fields: {
+          nom: {
+              validators: {
+                      stringLength: {
+                      min: 2,
+                  },
+                      notEmpty: {
+                      message: 'Please enter your First Name'
+                  }
+              }
+          },
+           prenom: {
+              validators: {
+                   stringLength: {
+                      min: 2,
+                  },
+                  notEmpty: {
+                      message: 'Please enter your Last Name'
+                  }
+              }
+          },
+     user_name: {
+              validators: {
+                   stringLength: {
+                      min: 8,
+                  },
+                  notEmpty: {
+                      message: 'Please enter your Username'
+                  }
+              }
+          },
+     user_password: {
+              validators: {
+                   stringLength: {
+                      min: 8,
+                  },
+                  notEmpty: {
+                      message: 'Please enter your Password'
+                  }
+              }
+          },
+    confirm_password: {
+              validators: {
+                   stringLength: {
+                      min: 8,
+                  },
+                  notEmpty: {
+                      message: 'Please confirm your Password'
+                  }
+              }
+          },
+          email: {
+              validators: {
+                  notEmpty: {
+                      message: 'Please enter your Email Address'
+                  },
+                  emailAddress: {
+                      message: 'Please enter a valid Email Address'
+                  }
+              }
+          },
+          contact_no: {
+              validators: {
+                stringLength: {
+                      min: 12, 
+                      max: 12,
+                  notEmpty: {
+                      message: 'Please enter your Contact No.'
+                   }
+              }
+          },
+     department: {
+              validators: {
+                  notEmpty: {
+                      message: 'Please select your Department/Office'
+                  }
+              }
+          },
+              }
+          }
+      })
+      .on('success.form.bv', function(e) {
+          $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
+              $('#contact_form').data('bootstrapValidator').resetForm();
+
+          // Prevent form submission
+          e.preventDefault();
+
+          // Get the form instance
+          var $form = $(e.target);
+
+          // Get the BootstrapValidator instance
+          var bv = $form.data('bootstrapValidator');
+
+          // Use Ajax to submit form data
+          $.post($form.attr('action'), $form.serialize(), function(result) {
+              console.log(result);
+          }, 'json');
+      });
+});
+document.addEventListener('DOMContentLoaded', function() {
+  // Sélectionner le formulaire
+  var form = document.querySelector('#msform');
+
+  // Sélectionner les boutons "Next Step" et "Previous"
+  var nextButtons = document.querySelectorAll('.next');
+  var prevButtons = document.querySelectorAll('.previous');
+
+  // Ajouter un gestionnaire d'événements pour les boutons "Next Step"
+  for (var i = 0; i < nextButtons.length; i++) {
+    nextButtons[i].addEventListener('click', function() {
+      var currentFieldset = this.parentElement;
+      var nextFieldset = currentFieldset.nextElementSibling;
+
+      // Valider le formulaire avant de passer à l'étape suivante
+      if (validateForm(currentFieldset)) {
+        currentFieldset.classList.remove('active');
+        nextFieldset.classList.add('active');
+      }
+    });
+  }
+
+  // Ajouter un gestionnaire d'événements pour les boutons "Previous"
+  for (var i = 0; i < prevButtons.length; i++) {
+    prevButtons[i].addEventListener('click', function() {
+      var currentFieldset = this.parentElement;
+      var prevFieldset = currentFieldset.previousElementSibling;
+
+      currentFieldset.classList.remove('active');
+      prevFieldset.classList.add('active');
+    });
+  }
+
+  // Fonction pour valider le formulaire
+  function validateForm(fieldset) {
+    var inputs = fieldset.querySelectorAll('input, select');
+    var valid = true;
+
+    // Vérifier chaque champ de saisie dans le fieldset actuel
+    for (var i = 0; i < inputs.length; i++) {
+      var input = inputs[i];
+
+      // Si le champ est requis, vérifier s'il est vide
+      if (input.required && input.value.trim() === '') {
+        input.classList.add('is-invalid');
+        valid = false;
+      } else {
+        input.classList.remove('is-invalid');
+      }
+    }
+
+    return valid;
+  }
+
+  // Ajouter un gestionnaire d'événements pour la soumission du formulaire
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Valider le dernier fieldset avant la soumission
+    var lastFieldset = form.querySelector('fieldset:last-of-type');
+    if (validateForm(lastFieldset)) {
+      // Envoyer le formulaire au serveur
+      form.submit();
+    }
+  });
+});
+
 
 $(document).ready(function(){
   $('#myModal').on('shown.bs.modal', function () {

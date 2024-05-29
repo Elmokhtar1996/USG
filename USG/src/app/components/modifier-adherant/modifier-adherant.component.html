@@ -1,0 +1,286 @@
+<!-- <app-adherants></app-adherants> -->
+<app-home></app-home>
+
+
+<body class="hm-gradient">  
+    
+  <main id="main" class="main"> 
+    <legend><h2><b>Ajouter un adhérent :</b></h2></legend><br>
+      <div class="container">
+                  <form [formGroup]="editForm" id="msform"  class="form-horizontal mx-auto" (ngSubmit)="onSubmit()" ng-submitted="true">  
+                 <div class="form-container">
+                           <!-- champs personne et coordonnes -->
+                  <div class="form-section">
+                    <h3>Informations personnelles</h3>
+            
+                  <div class="form-group">
+                        <div class="col-md-6 inputGroupContainer">
+                          <label>Nom :</label>
+
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" placeholder="Nom" formControlName="nom" id="nom" class="form-control">
+                          </div>
+                        </div>
+                        <div class="col-md-6 inputGroupContainer">
+                          <label>Prénom :</label>
+
+                          <div class="input-group">
+                            <input type="text" placeholder="Prénom" formControlName="prenom" class="form-control" id="prenom">
+                          </div>
+                        </div>
+                  </div>                       
+                  <div class="form-group">
+                      <div class="col-md-6 inputGroupContainer">
+                        <label>Date de naissance :</label>
+
+                          <div class="input-group">
+                      <input type="date" placeholder="Date de naissance" formControlName="dateDN" class="form-control" id="dateDeNaissance">
+                          </div>
+                      </div>
+                      <div class="col-md-6 inputGroupContainer">
+                        <label>Choisissez le genre :</label>
+
+                          <div class="input-group">
+                      <select  aria-placeholder="genre" formControlName="genre" class="form-control " style="height: 35px;">
+                        <option value="" selected disabled>Choisissez le genre</option>
+                          <option value="Masculin">Masculin</option>
+                          <option value="Féminin">Féminin</option>
+                      </select>
+                     </div>
+                      </div>
+                  </div>                
+                  <div class="form-group">
+                    <div class="col-md-6 inputGroupContainer">
+                      <label>Email :</label>
+
+                          <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                          <input type="text" placeholder="Email" formControlName="adresseMail" class="form-control" id="adresseMail">
+                         </div>
+                    </div>
+                      
+                    <div class="col-md-6 inputGroupContainer">
+                      <label>telPortable :</label>
+
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                        <input type="text" placeholder="telPortable" formControlName="telPortable" class="form-control" id="telPortable" >
+                      </div>            
+                   </div>
+                  </div>
+                  <div class="form-group">
+
+                          <div class="col-md-6 inputGroupContainer">
+                            <label>Num et Voie :</label>
+
+                              <div class="input-group">
+                               <input type="text" placeholder="Num et Voie" formControlName="numEtVoie" class="form-control" id="numEtVoie">
+                              </div> 
+                         </div>
+                          <div class="col-md-6 inputGroupContainer">
+                            <label>Code Postale :</label>
+
+                              <div class="input-group">
+                            <input type="text" placeholder="Code Postale" formControlName="codePostal" class="form-control" id="codePostal">
+                              </div>
+                         </div>
+                      
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-6 inputGroupContainer">
+                      <label>Commune :</label>
+
+                      <div class="input-group">
+                      <input placeholder="Commune" type="text" formControlName="commune" class="form-control" id="commune">
+                     </div>
+                    </div>
+                    <div class="col-md-6 inputGroupContainer">
+                      <label>Handicap :</label>
+
+                      <div class="input-group">
+                      <select  formControlName="handicap" class="form-control" id="Handicap" style="height: 35px;">
+                        <option value="" selected disabled>Handicap</option>
+                          <option value="1">OUI</option>
+                          <option value="2">NON</option>
+                  
+                      </select>
+                     
+               </div> 
+                  </div>
+                  </div>
+                 
+                  </div>                
+      
+                </div>
+                <div>
+                  <div class="form-section" style="width: 50%;">
+                    <h3>Informations Parent</h3>
+                  <div class="form-group">
+                  <div class="col-md-6 inputGroupContainer">
+                    <label for="nomParent">Nom du Parent :</label>
+
+                      <div class="input-group">
+                          <input type="text" placeholder="Nom du Parent" formControlName="nomParent" class="form-control" id="nomParent">
+                      </div>
+                  </div>
+                  <!-- Champ Email du Parent -->
+                  <div class="col-md-6 inputGroupContainer">
+                    <label for="prenomParent">Prenom du Parent :</label>
+                      <div class="input-group">
+                          <input type="text" placeholder="Prenom du Parent" formControlName="prenomParent" class="form-control" id="prenomParent">
+                      </div>
+                  </div>
+                  </div>
+                  <div class="form-group">
+                  <div class="col-md-6 inputGroupContainer">
+                    <label for="prenomParent">Genre :</label>
+
+                    <div class="input-group">
+                <select  aria-placeholder="genre" formControlName="sexeParent" class="form-control " style="height: 35px;">
+                  <option value="" selected disabled>Choisissez le genre</option>
+                    <option value="Masculin">Masculin</option>
+                    <option value="Féminin">Féminin</option>
+                </select>
+               </div>
+                </div>
+                
+           
+                <!-- Champ Email du Parent -->
+                <div class="col-md-6 inputGroupContainer">
+                  <label for="prenomParent">Email du Parent :</label>
+
+                    <div class="input-group">
+                        <input type="email" placeholder="Email du Parent" formControlName="emailParent" class="form-control" id="emailParent">
+                    </div>
+                </div> 
+                 </div>
+                <div class="form-group">
+                <div class="col-md-6 inputGroupContainer">
+                  <label for="prenomParent">Tel du Parent :</label>
+                  <div class="input-group">
+                      <input type="text" placeholder="Tel du Parent" formControlName="telParent" class="form-control" id="telParent">
+                  </div>
+              </div>
+              <!-- Champ Email du Parent -->
+              <div class="col-md-6 inputGroupContainer">
+                <label for="prenomParent">num voie :</label>
+                  <div class="input-group">
+                      <input type="text" placeholder="num voie" formControlName="numVoie" class="form-control" id="numVoie">
+                  </div>
+              </div>
+                </div>
+                <div class="form-group">
+              <div class="col-md-6 inputGroupContainer">
+                <label for="voieParent">num voie :</label>
+
+                <div class="input-group">
+                    <input type="text" placeholder="voie" formControlName="voieParent" class="form-control" id="voieParent">
+                </div>
+            </div>
+            <!-- Champ Email du Parent -->
+            <div class="col-md-6 inputGroupContainer">
+              <label for="prenomParent">Date de naissance :</label>
+
+                <div class="input-group">
+                    <input type="date" placeholder="dateNaissanceP" formControlName="dateNaissanceP" class="form-control" id="dateNaissanceP">
+                </div>
+            </div>
+                 </div>
+                </div>
+                <div class="form-section" style="width: 50%;" *ngIf="afficherModification">
+                  <h3>modifier une adhésion</h3>
+                    
+                  <div class="form-group">
+                          <input type="hidden" placeholder="statutAdhesion" formControlName="statutAdhesion" id="statutAdhesion" class="form-control">
+                      <div class="col-md-6 inputGroupContainer">
+                        <label>Paiment :</label>
+
+                        <div class="input-group">
+                          <select   formControlName="paiement" class="form-control" style="height: 35px;">
+                            <option value="" selected disabled>paiement</option>
+                              <option value="1">OUI</option>
+                              <option value="0">NON</option>
+                          </select>
+                        </div>
+                        
+                      </div>
+                      <div class="col-md-6 inputGroupContainer">
+                        <label>Choisissez la saison :</label>
+
+                        <div class="input-group">
+                          <select formControlName="idSaison" class="form-control" style="height: 35px;">
+                            <option value="" selected disabled>Choisissez la saison</option>
+                            <option *ngFor="let saison of saisons; let i = index" [value]="saison.idSaison">{{saison.dateDebut}}</option>
+                          </select>
+                        </div>
+                      </div>
+                  </div>       
+                  <div class="form-group">
+                      <div class="col-md-6 inputGroupContainer">
+                        <label>Licence :</label>
+
+                          <div class="input-group">
+                          <input type="text" placeholder="Licence"  formControlName="LibeleLicence" class="form-control" id="idLicence">
+                          </div>
+                      </div>
+                  
+                      <div class="col-md-6 inputGroupContainer">
+                        <label>Sélectionnez une notification :</label>
+
+                        <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <select formControlName="notification" class="form-control" style="height: 35px;">
+                          <option value="" selected disabled>Sélectionnez une notification</option>
+                          <option value="1">Dossier incomplet</option>
+                          <option value="2">Cotisation incomplète</option>
+                          <option value="3">Documents et cotisation manquants</option>
+                          <option value="4">certificat medical absent</option>
+                          <option value="5">reinscription</option>
+                      </select>
+                        </div>
+  
+                    </div>
+                  </div>
+                  <div class="form-group">
+                   
+                    <div class="col-md-6 inputGroupContainer">
+                      <label>Choisissez la section :</label>
+                      <div class="input-group">
+                        <select formControlName="idSection" class="form-control" style="height: 35px;">
+                          <option value="" selected disabled>Choisissez la section</option>
+                          <option *ngFor="let section of sections; let i = index" [value]="section.idSection">{{section.Libelle}}</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-6 inputGroupContainer">
+                      <label>commentaire :</label>
+                          <div class="input-group">
+                      <textarea type="text" placeholder="commentaire" formControlName="commentaire" class="form-control" id="commentaire"></textarea>
+                          </div>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="col-md-6 inputGroupContainer">
+                      <label>Modifier une adhésion :</label>
+                      <div class="input-group">
+                         <select formControlName="modifierAdhesion" class="form-control" style="height: 35px;" (change)="chargerInfosAdhesion($event)">
+                          <option value="oui" >Choisissez la saison</option>
+                          <option *ngFor="let saison of modifierAdhesionData; let i = index" [value]="saison.idAdhesion">{{saison.nomSection}}</option>                          
+                         </select>
+                      
+                      </div>
+                   </div>
+                
+                </div>
+                
+                <button type="submit">Valider</button>
+                <button type="button" class="annuler" (click)="annulerModification()">Annuler</button>
+                </form>
+                  
+            </div>     
+ 
+            
+</main>
+</body>

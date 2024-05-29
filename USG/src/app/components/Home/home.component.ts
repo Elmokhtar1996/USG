@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { GoogleApiService, UserInfo } from '../../services/serviceAuth/google-api.service';
 import { ApiService } from '../../services/serviceAdherant/api.service';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class HomeComponent {
   mailSnippets: string[] = []
   userInfo?: UserInfo
 
-  constructor(private readonly googleApi: GoogleApiService,private apiService: ApiService) {
+  constructor(private readonly googleApi: GoogleApiService,private apiService: ApiService,public authService: AuthService,) {
     this.readSection();
     googleApi.userProfileSubject.subscribe( info => {
       this.userInfo = info
@@ -34,10 +35,10 @@ export class HomeComponent {
     return this.googleApi.isLoggedIn()
   }
 
-  logout() {
-    this.googleApi.signOut()
-  }
 
+  logout() {
+    this.authService.doLogout()
+  }
   async getEmails() {
     if (!this.userInfo) {
       return;

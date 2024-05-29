@@ -1,0 +1,50 @@
+.image-container {
+    text-align: center;
+}
+
+.card {
+    height: 300px; /* Taille fixe pour les cartes */
+    overflow: hidden; /* Cache les parties des images qui dépassent de la carte */
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.image-container img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover; /* Empêche la déformation de l'image en la recadrant */
+}
+
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    text-align: center;
+}
+button{
+    color: black;
+    background-color: #FAD9B6;
+    border-width: 2px;
+    border-color: black;
+    }
+.dropdown-menu {
+    min-width: auto;
+}
+
+.dropdown-toggle {
+    background-color: transparent;
+    border: none;
+}
+
+.dropdown-item {
+    color: #333;
+}
+
+.dropdown-item:hover {
+    background-color: #f9f9f9;
+    color: #333;
+}
+

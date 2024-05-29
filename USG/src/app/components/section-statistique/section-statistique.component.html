@@ -1,0 +1,24 @@
+<app-home></app-home>
+
+<body class="hm-gradient">  
+  <main id="main" class="main"> 
+    <div class="whitebutton">
+      <a href="assets/img/sec.pdf" alt="">Telecharger</a><br>
+      <span class="up">click to Download</span><br>
+      <span class="down">130k .rar</span></div> 
+  
+      <br>
+      
+  <h2 class="content__title">Horaires et lieux d'entrainement</h2>
+  <div class="wrapper">
+    <div class="card" *ngFor="let Section of Sections ">
+      <span class="card__img"></span>
+      <div class="card__content">
+        <h3 class="card__title">{{Section.nomSection}}</h3>
+        <p class="card__category">{{Section.nomLieu}}</p>
+        <p class="card__description">{{Section.Horraires}}</p>
+        <p class="card__button">{{Section.Horraires}}</p>
+      </div>
+    </div>
+  </div>
+</main></body>
